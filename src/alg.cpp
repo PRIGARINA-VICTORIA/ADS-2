@@ -1,13 +1,15 @@
 // Copyright 2022 NNTU-CS
-#include <iostream>
 #include <cstdint>
 #include "alg.h"
 
 
 double pown(double value, uint16_t n) {
   double num = value;
-  for (int i = 1; i < n; i++) {
+  for (uint16_t i = 1; i < n; i++) {
     num *= value;
+  }
+  if (n == 0) { 
+    num = 1;
   }
   return num;
 }
@@ -36,7 +38,7 @@ double expn(double x, uint16_t count) {
 double sinn(double x, uint16_t count) {
   double sin = 0;
   for (uint16_t i = 1; i <= count; i++) {
-    sin += pown(-1, (i - 1)) * calcItem(x, (2 * i - 1));
+    sin += pown(-1, i - 1) * calcItem(x, 2 * i - 1);
   }
   return sin;
 }
@@ -44,7 +46,7 @@ double sinn(double x, uint16_t count) {
 double cosn(double x, uint16_t count) {
   double cos = 0;
   for (uint16_t i = 1; i <= count; i++) {
-    cos += pown(-1, (i - 1)) * calcItem(x, (2 * i - 2));
+    cos += pown(-1, i - 1) * calcItem(x, 2 * i - 2);
   }
   return cos;
 }
